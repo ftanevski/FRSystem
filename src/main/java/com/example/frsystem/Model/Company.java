@@ -11,10 +11,8 @@ public class Company {
     public Company(){}
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
     private String companyName;
     private String address;
     private String phone;
-    private String status;
+    private String category;
 }
