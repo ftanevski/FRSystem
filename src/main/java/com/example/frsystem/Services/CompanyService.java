@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface CompanyService {
     List<Company> findAll();
-    List<Company> findByCategory();
+    List<Company> findByCategory(String category);
 
 }
