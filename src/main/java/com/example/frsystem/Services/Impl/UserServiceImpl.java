@@ -1,5 +1,6 @@
 package com.example.frsystem.Services.Impl;
 
+import com.example.frsystem.Model.Exceptions.*;
 import com.example.frsystem.Model.Project;
 import com.example.frsystem.Model.User;
 import com.example.frsystem.Repos.ProjectRepo;
@@ -46,10 +47,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public User addProject(String Username, String projectName) {
         Project project1 = projectRepo.findByName(projectName);
-        Optional<User> user = userRepo.findByUsername(Username).orElseThrow(UserNotFoundException::new);
-        user.get().getProjects().add(project1);
-        User user1 = user.get();
-        return userRepo.save(user1);
+        User user = userRepo.findByUsername(Username).orElseThrow(UserNotFoundException::new);
+        user.getProjects().add(project1);
+        return userRepo.save(user);
     }
 
     @Override
