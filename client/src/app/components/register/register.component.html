@@ -1,45 +1,61 @@
-<div class="d-flex container w-25 m-5 p-5 mx-auto border rounded">
+<div class="d-flex container w-25 m-5 p-5 mx-auto border border-dark rounded">
   <div class="container flex-row">
     <h1 class="mb-4 p-2">Register</h1>
-    <form>
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
       <div class="form-floating mb-3">
         <input
           type="email"
           class="form-control"
-          id="email"
           placeholder="Email"
+          name="email"
+          ngModel
+          required
+          email
+          #email="ngModel"
         />
+        <p class="help-block mt-2" *ngIf="!email.valid && email.touched"><i class="fa-solid fa-circle-exclamation me-1"></i>Please enter a valid Email address!</p>
         <label for="email">Email</label>
       </div>
-      <p>{{userRegisterInfo.email}}</p>
       <div class="form-floating mb-3">
         <input
           type="username"
           class="form-control"
-          id="floatingInput"
           placeholder="Username"
+          name="username"
+          ngModel
+          required
+          #username="ngModel"
         />
+        <p class="help-block mt-2" *ngIf="!username.valid && username.touched"><i class="fa-solid fa-circle-exclamation me-1"></i>Please enter a username!</p>
         <label for="floatingInput">Username</label>
       </div>
       <div class="form-floating mb-3">
         <input
           type="password"
           class="form-control"
-          id="floatingInput"
           placeholder="Password"
+          name="password"
+          ngModel
+          required
+          #password="ngModel"
         />
+        <p class="help-block mt-2" *ngIf="!password.valid && password.touched"><i class="fa-solid fa-circle-exclamation me-1"></i>Please enter a username!</p>
         <label for="floatingInput">Password</label>
       </div>
       <div class="form-floating mb-3">
         <input
           type="password"
           class="form-control"
-          id="floatingInput"
           placeholder="Confirm password"
+          name="confirmPassword"
+          ngModel
+          required
+          #confirmPassword="ngModel"
         />
+        <p class="help-block mt-2" *ngIf="!confirmPassword.valid && confirmPassword.touched"><i class="fa-solid fa-circle-exclamation me-1"></i>Please enter a username!</p>
         <label for="floatingInput">Confirm password</label>
       </div>
-      <button type="button" class=" btn btn-primary mb-4 p-2 text-center" (click)="register($event)">Register</button>
+      <button type="submit" class=" btn btn-primary mb-4 p-2 text-center">Register</button>
     </form>
   </div>
 </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -6,17 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  @ViewChild('form') registerForm: NgForm;
 
-  userRegisterInfo: any = { email: '', username: '', password: '', confirmPassword: '' };
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  onSubmit(form: NgForm) {
+    console.log(this.registerForm.value);
   }
 
-  register(value: any) {
-    console.log(value);
-
+  ngOnInit(): void {
   }
 
 }
